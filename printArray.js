@@ -14,42 +14,52 @@ module.exports = function printArray (arr, digits, dimxy) {
   var i, j, k, c
     , rows = arr.length
     , cols = arr[0].length
+    , negs = false
+
+  // If no cols, we have a row vect
+  if (cols === undefined) {
+    cols = rows
+    rows = 1
+  }
+
   if (dimxy) {
     rows = dimxy[0]
     cols = dimxy[1]
-    if (rows * cols !== arr.length)
-      dimxy = undefined
   }
 
+  // Flatten array for indexing and multi-processing
   arr = flatten(arr)
-// If 2D array, print as 2D array
-// array length = x*y, then print as 2D array
-  if (cols) {
-    for (i = 0; i < rows; i++) {
-      for (j = 0; j < cols; j++) {
-        c = arr[i * cols + j].toPrecision(digits).toString()
-        if (c.length > digits)
-          c = c.slice(0, digits)
-        if (c.length <= digits)
-          for(k = c.length; k < digits + 1; k++)
-            c += " "
-        process.stdout.write( c )
-      }
-      process.stdout.write("\n")
+
+  if (rows * cols !== arr.length)
+    throw new Error("xlen * ylen !== arr.length")
+
+  if(!digits)
+    digits = 5
+
+  // Default look for negative numbers
+  for(i = 0; i < arr.length; i++) {
+    if(arr[i] < 0) {
+      negs = true
+      digits++
+      break
     }
   }
-  // Else 1D array, print as row vector
-  else {
-    for (i = 0; i < rows; i++) {
-      c = arr[i].toPrecision(digits).toString()
+
+  for (i = 0; i < rows; i++) {
+    for (j = 0; j < cols; j++) {
+      c = arr[i * cols + j]
+      if(negs)
+        c = (c > 0 ? ' ': '') + c.toPrecision(digits).toString()
+      else
+        c = c.toPrecision(digits).toString()
       if (c.length > digits)
         c = c.slice(0, digits)
       if (c.length <= digits)
         for(k = c.length; k < digits + 1; k++)
           c += " "
       process.stdout.write( c )
-      process.stdout.write("\n")
     }
+    process.stdout.write("\n")
   }
 
 
