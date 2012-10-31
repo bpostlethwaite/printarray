@@ -1,4 +1,4 @@
-var aprint = require('../printArray')
+var aprint = require('../printarray')
 
 //////////////////////////////////////////////////
 var ex = "Example 1: Vectors printed as vector"

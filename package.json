@@ -1,0 +1,27 @@
+{
+  "name": "printArray",
+  "version": "0.1.0",
+  "description": "prints javascript arrays with easy 1D, 2D and rebroadcast API",
+  "main": "printArray.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/bpostlethwaite/printArray.git"
+  },
+  "keywords": [
+    "print",
+    "array",
+    "numerical",
+    "display",
+    "2D",
+    "1D",
+    ""
+  ],
+  "author": "Ben Postlethwaite",
+  "license": "MIT"
+}
