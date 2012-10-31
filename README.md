@@ -4,7 +4,7 @@ A quick implementation to visualize arrays for prototyping and development. Righ
 
 ## How to use
 
-The API is simple. Just `aprint(array, numOfDigits)` or to reshape as well as print
+The API is simple. Just `aprint(array, numOfDigits, [shapex, shapey])` or to reshape as well as print
 
 ```javascript
 
