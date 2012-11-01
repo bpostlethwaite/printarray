@@ -1,8 +1,8 @@
 {
   "name": "printarray",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "prints javascript arrays with easy 1D, 2D and rebroadcast API",
-  "main": "printArray.js",
+  "main": "printarray.js",
   "directories": {
     "example": "examples"
   },
